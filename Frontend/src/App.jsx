@@ -1,11 +1,18 @@
-import React from 'react'
+import React from "react";
+import {useTheme} from './context/ColorContext'
 
 function App() {
+  const { theme, toggleTheme, color, changeColor } = useTheme();
   return (
-    <div className='bg-red-700'>
-      hiiii
+    <div>
+      <input
+        type="color"
+        id="colorPicker"
+        onChange={(e) => changeColor(e.target.value)}
+        value={color}
+      />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
