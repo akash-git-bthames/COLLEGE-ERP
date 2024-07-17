@@ -8,7 +8,7 @@ import Person4OutlinedIcon from '@mui/icons-material/Person4Outlined';
 function FirstPage() {
     const name=['Admin','Teacher','Principal','Student']
   return (
-    <div className="w-[90%] h-auto grid grid-cols-1 grid-rows-4  m-auto ">
+    <div className="w-[90%] h-auto grid grid-cols-1 grid-rows-4 sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-3 m-auto ">
       <div className=" col-span-1 row-span-1 w-full p-2  ">
         <FirstPageCard icon={<AdminPanelSettingsOutlinedIcon sx={{fontSize:'120px'}}/>} name={name[0]}/>
       </div>
