@@ -8,18 +8,22 @@ function App() {
   const { theme, toggleTheme, color, changeColor } = useTheme();
   
   return (
-    <div className="h-full w-full  dark:bg-gray-900 grid grid-cols-1 grid-rows-12 duration-200 ">
-      <div className="col-span-1 row-span-1 bg-slate-700">
+    <div className="min-h-screen w-full  dark:bg-gray-900  duration-200 ">
+      <div className="h-12 flex  justify-end items-center gap-4 pr-10">
+     
+      <DarkLightToggleButton />
       <input
-        type="color"
-        id="colorPicker"
-        onChange={(e) => changeColor(e.target.value)}
-        value={color}
-      /> 
-       <button onClick={toggleTheme}>toggle</button>
-       <DarkLightToggleButton/>
+  type="color"
+  id="colorPicker"
+  onChange={(e) => changeColor(e.target.value)}
+  value={color}
+  className="h-7 w-7  cursor-pointer rounded-full bg-transparent"
+/>
+
+       
+       
       </div>
-      <div className="col-span-1 row-span-11">
+      <div className=" ">
       <FirstPage />
       </div>
     </div>
