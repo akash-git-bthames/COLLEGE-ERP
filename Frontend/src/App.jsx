@@ -6,7 +6,7 @@ function App() {
   const { theme, toggleTheme, color, changeColor } = useTheme();
   
   return (
-    <div className="h-full w-full dark:bg-gray-900">
+    <div className="h-full w-full dark:bg-gray-900 duration-200 ">
       <input
         type="color"
         id="colorPicker"
