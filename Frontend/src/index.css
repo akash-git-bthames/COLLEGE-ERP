@@ -61,7 +61,7 @@
 }
 
 .checkbox:checked + .slider {
-  box-shadow: 1px 1px 5px 0 rgb(42, 157, 143) inset;
+  /* box-shadow: 1px 1px 5px 0 rgb(42, 157, 143) inset; */
 }
 
 .checkbox:checked + .slider:before {
@@ -69,8 +69,13 @@
   -ms-transform: translateX(26px);
   transform: translateX(26px);
   /* background-color: #2a9d8f; */
-  box-shadow: inset -1px 1px 2px 0px #a3fff4;
+  /* box-shadow: inset -1px 1px 2px 0px #a3fff4; */
 }
+
+.slider::before {
+  background-color: var(--dynamic-before-color);
+}
+
 
 /* Rounded sliders */
 .slider.round {
