@@ -3,6 +3,7 @@ import {useTheme} from './context/ColorContext'
 import FirstPage from "./Components/FirstPage";
 
 import DarkLightToggleButton from "./Components/DarkLightToggleButton";
+import HomePage from "./Components/HomePage";
 
 function App() {
   const { theme, toggleTheme, color, changeColor } = useTheme();
@@ -24,7 +25,8 @@ function App() {
        
       </div>
       <div className=" ">
-      <FirstPage />
+      {/* <FirstPage /> */}
+      <HomePage/>
       </div>
     </div>
   );
