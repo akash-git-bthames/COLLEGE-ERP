@@ -5,7 +5,7 @@ import Debouncing from './Debouncing'
 
 function HomePage() {
   return (
-    <div>
+    <div className=' w-full h-[100vh] '>
      <Drawer/>
      {/* <Debouncing/> */}
     </div>
