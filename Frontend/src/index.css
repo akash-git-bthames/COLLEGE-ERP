@@ -19,6 +19,17 @@
   border-radius: 50%;
 }
 
+
+
+ul li {
+  border-bottom: 1px solid ;
+}
+
+
+ul li:first-child {
+  border-top: 1px solid ;
+}
+
 /* DarkLightToggleButton css**************************************************** */
 
 .switch {

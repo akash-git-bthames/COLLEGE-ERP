@@ -24,7 +24,7 @@ function App() {
        
        
       </div>
-      <div className=" ">
+      <div className="h-[100vh] w-full  ">
       {/* <FirstPage /> */}
       <HomePage/>
       </div>
