@@ -4,6 +4,17 @@ import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import {useTheme} from '../context/ColorContext'
 import SidebarCells from './SidebarCells';
+import DvrOutlinedIcon from '@mui/icons-material/DvrOutlined';
+import MapsHomeWorkOutlinedIcon from '@mui/icons-material/MapsHomeWorkOutlined';
+import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
+import TransferWithinAStationOutlinedIcon from '@mui/icons-material/TransferWithinAStationOutlined';
+import TaskOutlinedIcon from '@mui/icons-material/TaskOutlined';
+import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined';
+import RunCircleOutlinedIcon from '@mui/icons-material/RunCircleOutlined';
+import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined';
+import PersonSearchOutlinedIcon from '@mui/icons-material/PersonSearchOutlined';
+import AutoStoriesOutlinedIcon from '@mui/icons-material/AutoStoriesOutlined';
+
 
 
 const Drawer = ({isOpen,toggleDrawer}) => {
@@ -31,16 +42,16 @@ const Drawer = ({isOpen,toggleDrawer}) => {
        </div>
         <nav className="font-normal">
           <ul >
-            <SidebarCells name={name[0]} isOpen={isOpen}/>
-            <SidebarCells name={name[1]} isOpen={isOpen}/>
-            <SidebarCells name={name[2]} isOpen={isOpen}/>
-            <SidebarCells name={name[3]} isOpen={isOpen}/>
-            <SidebarCells name={name[4]} isOpen={isOpen}/>
-            <SidebarCells name={name[5]} isOpen={isOpen}/>
-            <SidebarCells name={name[6]} isOpen={isOpen}/>
-            <SidebarCells name={name[7]} isOpen={isOpen}/>
-            <SidebarCells name={name[8]} isOpen={isOpen}/>
-            <SidebarCells name={name[9]} isOpen={isOpen}/>
+            <SidebarCells name={name[0]} isOpen={isOpen} icon={<DvrOutlinedIcon/>}/>
+            <SidebarCells name={name[1]} isOpen={isOpen} icon={<MapsHomeWorkOutlinedIcon/>}/>
+            <SidebarCells name={name[2]} isOpen={isOpen} icon={<PersonAddAltOutlinedIcon/>}/>
+            <SidebarCells name={name[3]} isOpen={isOpen} icon={<TransferWithinAStationOutlinedIcon/>}/>
+            <SidebarCells name={name[4]} isOpen={isOpen} icon={<TaskOutlinedIcon/>}/>
+            <SidebarCells name={name[5]} isOpen={isOpen} icon={<CurrencyRupeeOutlinedIcon/>}/>
+            <SidebarCells name={name[6]} isOpen={isOpen} icon={<RunCircleOutlinedIcon/>}/>
+            <SidebarCells name={name[7]} isOpen={isOpen} icon={<ReceiptOutlinedIcon/>}/>
+            <SidebarCells name={name[8]} isOpen={isOpen} icon={<PersonSearchOutlinedIcon/>}/>
+            <SidebarCells name={name[9]} isOpen={isOpen} icon={<AutoStoriesOutlinedIcon/>}/>
 
            
            
