@@ -4,6 +4,7 @@ import HomePageMainContent from './HomePageMainContent';
 
 function HomePage() {
   const [isOpen, setIsOpen] = useState(false);
+  const [mainContent, setMainContent] = useState('');
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
@@ -11,8 +12,8 @@ function HomePage() {
 
   return (
     <div className="w-full h-[100vh] flex gap-1">
-      <Drawer isOpen={isOpen} toggleDrawer={toggleDrawer} />
-      <HomePageMainContent isOpen={isOpen} />
+      <Drawer isOpen={isOpen} toggleDrawer={toggleDrawer} setClickCell={setMainContent}/>
+      <HomePageMainContent isOpen={isOpen} mainContent={mainContent}/>
     </div>
   );
 }

@@ -17,10 +17,14 @@ import AutoStoriesOutlinedIcon from '@mui/icons-material/AutoStoriesOutlined';
 
 
 
-const Drawer = ({isOpen,toggleDrawer}) => {
+const Drawer = ({isOpen,toggleDrawer,setClickCell}) => {
   
  const {color}=useTheme();
- const name =['school Dashboard', 'school Profile', 'New Admission', 'Section Shift','Result','fee Details','Progress Activity','TC','Search Student','Question Paper']
+ const name =['School Dashboard', 'School Profile', 'New Admission', 'Section Shift','Result','Fee Details','Progress Activity','TC','Search Student','Question Paper']
+
+
+
+
   return (
     
       
@@ -40,24 +44,18 @@ const Drawer = ({isOpen,toggleDrawer}) => {
           
         </button>
        </div>
-        <nav className="font-normal">
+        <nav className="font-medium">
           <ul >
-            <SidebarCells name={name[0]} isOpen={isOpen} icon={<DvrOutlinedIcon/>}/>
-            <SidebarCells name={name[1]} isOpen={isOpen} icon={<MapsHomeWorkOutlinedIcon/>}/>
-            <SidebarCells name={name[2]} isOpen={isOpen} icon={<PersonAddAltOutlinedIcon/>}/>
-            <SidebarCells name={name[3]} isOpen={isOpen} icon={<TransferWithinAStationOutlinedIcon/>}/>
-            <SidebarCells name={name[4]} isOpen={isOpen} icon={<TaskOutlinedIcon/>}/>
-            <SidebarCells name={name[5]} isOpen={isOpen} icon={<CurrencyRupeeOutlinedIcon/>}/>
-            <SidebarCells name={name[6]} isOpen={isOpen} icon={<RunCircleOutlinedIcon/>}/>
-            <SidebarCells name={name[7]} isOpen={isOpen} icon={<ReceiptOutlinedIcon/>}/>
-            <SidebarCells name={name[8]} isOpen={isOpen} icon={<PersonSearchOutlinedIcon/>}/>
-            <SidebarCells name={name[9]} isOpen={isOpen} icon={<AutoStoriesOutlinedIcon/>}/>
-
-           
-           
-            
-            
-            
+            <SidebarCells name={name[0]} isOpen={isOpen} icon={<DvrOutlinedIcon/>}  className='bg-red-600' setClickCell={setClickCell}/>
+            <SidebarCells name={name[1]} isOpen={isOpen} icon={<MapsHomeWorkOutlinedIcon/>} setClickCell={setClickCell}/>
+            <SidebarCells name={name[2]} isOpen={isOpen} icon={<PersonAddAltOutlinedIcon/>} setClickCell={setClickCell}/>
+            <SidebarCells name={name[3]} isOpen={isOpen} icon={<TransferWithinAStationOutlinedIcon/>} setClickCell={setClickCell}/>
+            <SidebarCells name={name[4]} isOpen={isOpen} icon={<TaskOutlinedIcon/>} setClickCell={setClickCell}/>
+            <SidebarCells name={name[5]} isOpen={isOpen} icon={<CurrencyRupeeOutlinedIcon/>} setClickCell={setClickCell}/>
+            <SidebarCells name={name[6]} isOpen={isOpen} icon={<RunCircleOutlinedIcon/>} setClickCell={setClickCell}/>
+            <SidebarCells name={name[7]} isOpen={isOpen} icon={<ReceiptOutlinedIcon/>} setClickCell={setClickCell}/>
+            <SidebarCells name={name[8]} isOpen={isOpen} icon={<PersonSearchOutlinedIcon/>} setClickCell={setClickCell}/>
+            <SidebarCells name={name[9]} isOpen={isOpen} icon={<AutoStoriesOutlinedIcon/>} setClickCell={setClickCell}/>
           </ul>
         </nav>
       </div>
