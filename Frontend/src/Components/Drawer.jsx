@@ -3,16 +3,13 @@ import React, { useState } from 'react';
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import {useTheme} from '../context/ColorContext'
+import SidebarCells from './SidebarCells';
 
 
-const Drawer = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const {color}=useTheme();
-
-  const toggleDrawer = () => {
-    setIsOpen(!isOpen);
-  };
-
+const Drawer = ({isOpen,toggleDrawer}) => {
+  
+ const {color}=useTheme();
+ const name =['school Dashboard', 'school Profile', 'New Admission', 'Section Shift','Result','fee Details','Progress Activity','TC','Search Student','Question Paper']
   return (
     
       
@@ -34,16 +31,18 @@ const Drawer = () => {
        </div>
         <nav className="font-thin ">
           <ul >
-            <li className="p-1 dark:hover:bg-slate-700 border-slate-500 hover:bg-slate-300 hover:cursor-pointer text-slate-950 dark:text-slate-300 lg:text-xl md:text-lg sm:text-sm  text-xs">School Dashboard</li>
-            <li className="p-1 dark:hover:bg-slate-700 border-slate-500 hover:bg-slate-300 hover:cursor-pointer text-slate-950 dark:text-slate-300 lg:text-xl md:text-lg sm:text-md text-sm">School Profile</li>
-            <li className="p-1 dark:hover:bg-slate-700 border-slate-500 hover:bg-slate-300 hover:cursor-pointer text-slate-950 dark:text-slate-300 lg:text-xl md:text-lg sm:text-md text-sm">New Admission</li>
-            <li className="p-1 dark:hover:bg-slate-700 border-slate-500 hover:bg-slate-300 hover:cursor-pointer text-slate-950 dark:text-slate-300 lg:text-xl md:text-lg sm:text-md text-sm">Section Shift</li>
-            <li className="p-1 dark:hover:bg-slate-700 border-slate-500 hover:bg-slate-300 hover:cursor-pointer text-slate-950 dark:text-slate-300 lg:text-xl md:text-lg sm:text-md text-sm">Result</li>
-            <li className="p-1 dark:hover:bg-slate-700 border-slate-500 hover:bg-slate-300 hover:cursor-pointer text-slate-950 dark:text-slate-300 lg:text-xl md:text-lg sm:text-md text-sm">fee details</li>
-            <li className="p-1 dark:hover:bg-slate-700 border-slate-500 hover:bg-slate-300 hover:cursor-pointer text-slate-950 dark:text-slate-300 lg:text-xl md:text-lg sm:text-md text-sm">Progress Activity</li>
-            <li className="p-1 dark:hover:bg-slate-700 border-slate-500 hover:bg-slate-300 hover:cursor-pointer text-slate-950 dark:text-slate-300 lg:text-xl md:text-lg sm:text-md text-sm">TC</li>
-            <li className="p-1 dark:hover:bg-slate-700 border-slate-500 hover:bg-slate-300 hover:cursor-pointer text-slate-950 dark:text-slate-300 lg:text-xl md:text-lg sm:text-md text-sm">Search Students</li>
-            <li className="p-1 dark:hover:bg-slate-700 border-slate-500 hover:bg-slate-300 hover:cursor-pointer text-slate-950 dark:text-slate-300 lg:text-xl md:text-lg sm:text-md text-sm">Question paper</li>
+            <SidebarCells name={name[0]} isOpen={isOpen}/>
+            <SidebarCells name={name[1]} isOpen={isOpen}/>
+            <SidebarCells name={name[2]} isOpen={isOpen}/>
+            <SidebarCells name={name[3]} isOpen={isOpen}/>
+            <SidebarCells name={name[4]} isOpen={isOpen}/>
+            <SidebarCells name={name[5]} isOpen={isOpen}/>
+            <SidebarCells name={name[6]} isOpen={isOpen}/>
+            <SidebarCells name={name[7]} isOpen={isOpen}/>
+            <SidebarCells name={name[8]} isOpen={isOpen}/>
+            <SidebarCells name={name[9]} isOpen={isOpen}/>
+
+           
            
             
             
