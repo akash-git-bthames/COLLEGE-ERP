@@ -29,7 +29,7 @@ const Drawer = ({isOpen,toggleDrawer}) => {
           
         </button>
        </div>
-        <nav className="font-thin ">
+        <nav className="font-normal">
           <ul >
             <SidebarCells name={name[0]} isOpen={isOpen}/>
             <SidebarCells name={name[1]} isOpen={isOpen}/>
