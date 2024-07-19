@@ -9,7 +9,7 @@ function App() {
   const { theme, toggleTheme, color, changeColor } = useTheme();
   
   return (
-    <div className="min-h-screen w-full  dark:bg-gray-900  duration-200 ">
+    <div className="min-h-screen w-full  dark:bg-slate-900  duration-200 ">
       <div className="h-12 flex  justify-end items-center gap-4 pr-10">
      
       <DarkLightToggleButton />
