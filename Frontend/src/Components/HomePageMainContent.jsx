@@ -43,13 +43,17 @@ const HomePageMainContent = ({ isOpen, mainContent }) => {
 
   return (
     <div
-      className={`flex-grow h-full rounded-tl-lg rounded-bl-lg border-2 border-slate-500 transition-all duration-200 ease-in-out ${
+      className={`flex-grow h-full  rounded-tl-lg rounded-bl-lg border-2 border-slate-500 text-slate-950 dark:text-slate-300 dark:bg-slate-800  bg-slate-50 transition-all duration-200 ease-in-out ${
         isOpen
           ? "ml-0"
           : "lg:ml-[-135px] md:ml-[-104px] sm:ml-[-76px] ml-[-48px]"
       }`}
     >
-      <div className="p-4">{renderContent()}</div>
+
+
+      {renderContent()}
+
+
     </div>
   );
 };
