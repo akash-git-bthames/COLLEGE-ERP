@@ -11,7 +11,7 @@ function SchoolDashboard() {
   const { color } = useTheme();
   return (
     <div className='h-[100vh]     
-                         overflow-y-scroll
+                        
                          
     '>
 
@@ -21,13 +21,13 @@ function SchoolDashboard() {
                      
       </div>
       <div className='h-[4vh] w-full bg-slate-200 dark:bg-slate-700 flex justify-around  items-center md:text-sm text-xs border-b-2 border-slate-500 dark:border-slate-500 overflow-x-scroll'>
-        <div className='flex items-center'><Groups2OutlinedIcon/> Total Enrollment :</div>
+        <div className='flex items-center'><Groups2OutlinedIcon /> Total Enrollment :</div>
         <div className='flex items-center'><Person2OutlinedIcon/>Total Boys :</div>
         <div className='flex items-center'><Person3OutlinedIcon/> Total Girls :</div>
       </div>
 
-      <div  className='h-[90vh] grid  lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 
-                            gap-1 lg:p-10 md:p-6 sm:p-4 p-3'>
+      <div  className='h-[90vh] grid  lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 
+                            md:gap-2 gap-1 lg:p-10 md:p-6 sm:p-4 p-3'>
       <SchoolDashboardCard className='col-span-1 row-span-1'/>
       <SchoolDashboardCard className='col-span-1 row-span-1'/>
       <SchoolDashboardCard className='col-span-1 row-span-1'/>
