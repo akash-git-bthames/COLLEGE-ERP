@@ -20,7 +20,7 @@ function SchoolDashboard() {
                      <ArrowDropDownCircleOutlinedIcon className='hover:cursor-pointer'/>
                      
       </div>
-      <div className='h-[4vh] w-full bg-slate-200 dark:bg-slate-700 flex justify-around  items-center md:text-sm text-xs border-b-2 border-slate-500 dark:border-slate-500 overflow-x-scroll'>
+      <div className='h-[4vh] w-full bg-slate-200 dark:bg-slate-700 flex justify-around  items-center md:text-sm text-[10px] border-b-2 border-slate-500 dark:border-slate-500 overflow-x-scroll'>
         <div className='flex items-center'><Groups2OutlinedIcon /> Total Enrollment :</div>
         <div className='flex items-center'><Person2OutlinedIcon/>Total Boys :</div>
         <div className='flex items-center'><Person3OutlinedIcon/> Total Girls :</div>
