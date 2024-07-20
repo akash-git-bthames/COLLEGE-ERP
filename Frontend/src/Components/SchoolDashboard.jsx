@@ -15,6 +15,8 @@ function SchoolDashboard() {
   const [year, setYear] = useState('current');
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  const yearArray=['2023-24', '2022-23', '2021-22', '2020-21', '2019-20', '2018-19', '2017-18', '2016-17', '2015-16'];
+  const gradeArray = ['1', '2', '3', '4', '5', '6','7', '8', '9', '10', '11', '12'];
 
   const handleClick = (event) => setAnchorEl(event.currentTarget);
 
@@ -28,6 +30,8 @@ function SchoolDashboard() {
       console.error('Invalid year value:', value);
     }
   };
+
+  
 
   return (
     <div className='h-[100vh]'>
@@ -52,8 +56,8 @@ function SchoolDashboard() {
           onClose={handleClose}
           TransitionComponent={Fade}
         >
-          {['2023-24', '2022-23', '2021-22', '2020-21', '2019-20', '2018-19', '2017-18', '2016-17', '2015-16'].map(year => (
-            <MenuItem key={year} onClick={() => handleClose(year)}>{year}</MenuItem>
+          {yearArray.map((year, idx) => (
+            <MenuItem key={idx} onClick={() => handleClose(year)}>{year}</MenuItem>
           ))}
         </Menu>
       </div>
@@ -63,10 +67,12 @@ function SchoolDashboard() {
         <div className='flex items-center'><Person3OutlinedIcon /> Total Girls :</div>
       </div>
       <div className='h-[90vh] grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 md:gap-2 gap-1 lg:p-10 md:p-6 sm:p-4 p-3'>
-        {Array.from({ length: 15 }).map((_, idx) => (
-          <SchoolDashboardCard key={idx} className='col-span-1 row-span-1' />
+        {gradeArray.map((val, idx) => (
+          <SchoolDashboardCard key={idx} grade={val}  className='col-span-1 row-span-1' />
         ))}
       </div>
+       
+        
     </div>
   );
 }
