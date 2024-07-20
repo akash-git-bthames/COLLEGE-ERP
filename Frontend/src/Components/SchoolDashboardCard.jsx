@@ -1,8 +1,8 @@
 import React from "react";
 import { useTheme } from "../context/ColorContext";
-function SchoolDashboardCard() {
+function SchoolDashboardCard({grade}) {
   const { color } = useTheme();
-  const classes = 12;
+  
   const totalBoys = 250;
   const totalGirls = 150;
   const sections = ["A", "B", "C", "D"];
@@ -13,7 +13,7 @@ function SchoolDashboardCard() {
         className=" h-[50%] lg:text-6xl font-bold md:text-5xl sm:text-4xl text-2xl flex justify-center items-center"
         style={{ color: color }}
       >
-        {classes}
+        {grade}
       </div>
 
       <div className="flex h-[20%] justify-evenly items-center lg:text-md lg:font-medium md:text-sm md:font-normal sm:text-xs sm:font-normal text-[10px] font-thin">
