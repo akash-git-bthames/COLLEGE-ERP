@@ -46,7 +46,7 @@ const Drawer = ({isOpen,toggleDrawer,setClickCell}) => {
        </div>
         <nav className="font-medium">
           <ul >
-            <SidebarCells name={name[0]} isOpen={isOpen} icon={<DvrOutlinedIcon/>}  className='bg-red-600' setClickCell={setClickCell}/>
+            <SidebarCells name={name[0]} isOpen={isOpen} icon={<DvrOutlinedIcon/>}   setClickCell={setClickCell}/>
             <SidebarCells name={name[1]} isOpen={isOpen} icon={<MapsHomeWorkOutlinedIcon/>} setClickCell={setClickCell}/>
             <SidebarCells name={name[2]} isOpen={isOpen} icon={<PersonAddAltOutlinedIcon/>} setClickCell={setClickCell}/>
             <SidebarCells name={name[3]} isOpen={isOpen} icon={<TransferWithinAStationOutlinedIcon/>} setClickCell={setClickCell}/>
