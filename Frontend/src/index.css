@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --color-primary: #3b82f6; /* Default color */
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.color-picker {
+  border-radius: 50%;
+}
+
+
+
+ul li {
+  border-bottom: 1px solid ;
+}
+
+
+ul li:first-child {
+  border-top: 1px solid ;
+}
+
+/* DarkLightToggleButton css**************************************************** */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch .checkbox {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  /* box-shadow: 1px 1px 5px 0 rgb(216, 79, 104) inset; */
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+ 
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  /* box-shadow: inset 1px 1px 2px 0px rgb(255, 124, 167); */
+}
+
+/* .checkbox:checked + .slider {
+   box-shadow: 1px 1px 5px 0 rgb(42, 157, 143) inset; 
+} */
+
+.checkbox:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+  /* background-color: #2a9d8f; */
+  /* box-shadow: inset -1px 1px 2px 0px #a3fff4; */
+}
+
+.slider::before {
+  background-color: var(--dynamic-before-color);
+}
+
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+
+
+/* scroll effect animation *****************************************************/
+
+/* Vertical scrollbar */
+::-webkit-scrollbar {
+  width: 15px; /* Width of vertical scrollbar */
+  height: 1px; /* Height of horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track:vertical {
+  background: white;
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  background: #8c8a8ad2;
+  border-radius: 3px;
+}
+
+/* ::-webkit-scrollbar-thumb:hover {
+  background: #121212;
+  cursor: -webkit-grab;
+  
+} */
+
+/* Horizontal scrollbar */
+::-webkit-scrollbar-horizontal {
+  height: 2px; /* Height of horizontal scrollbar */
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  background: #5d57575b;
+  border-radius: 2px;
+  
+}
+
+::-webkit-scrollbar-thumb:horizontal:hover {
+  background: #121212;
+  cursor: -webkit-grab;
+}
+
+
+
+/* classes animation******************************************* */
