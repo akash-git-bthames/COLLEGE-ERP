@@ -1,0 +1,149 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Student {
+  student_id                                      Int          @id @default(autoincrement())
+  first_name                                      String
+  last_name                                       String?
+  dob                                             DateTime
+  gender                                          String
+  email                                           String       @unique
+  phone                                           String?
+  address                                         String?
+  aadhar_number                                   Int          @unique
+  Religion                                        String?
+  Caste                                           String?
+  Blood_group                                     String?
+  Nationality                                     String?
+  Previous_school_name                            String?
+  PEN_given_by_previous_school                    String?
+  Previous_school_UDISE_code                      String?
+  enrollment_date                                 DateTime     @default(now())
+  enrollment_number                               String
+  PEN_number                                      String?
+  class                                           Int
+  section                                         String?
+  class_Roll_number                               Int
+  // subjects     Subject[]
+  // Marks         marks[]
+  // attendance      Attendance[]
+  Enrollments                                     Enrollment[]
+  fees                                            Fee[]
+  //Parents detail
+  Father_or_guardian_name                         String?
+  Father_or_guardian_aadhar_number                Int?
+  Father_or_guardian_mobile_number                Int?
+  Father_or_guardian_occupation_and_Qualification String?
+  Mother_name                                     String?
+  Mother_phone_number                             Int?
+  Father_mother_ration_card_number_and_type       String?
+}
+
+model Fee {
+  fee_id         Int       @id @default(autoincrement())
+  student_id     Int
+  month          String
+  year           Int
+  fee_session_id Int
+  amount         Float
+  paid_date      DateTime? @default(now())
+  status         String
+  session        Session   @relation(fields: [fee_session_id], references: [session_id])
+  student        Student   @relation(fields: [student_id], references: [student_id])
+}
+
+model Session {
+  session_id   Int          @id @default(autoincrement())
+  session_name String       @unique
+  start_date   DateTime?
+  end_date     DateTime?
+  Classes      Class[]
+  Subjects     Subject[]
+  Teachers     Teacher[]
+  Enrollments  Enrollment[]
+  fees         Fee[]
+}
+
+model Class {
+  class_id         Int          @id @default(autoincrement())
+  class_name       String
+  class_teacher_id Int
+  section          String
+  session_id       Int
+  teacher          Teacher      @relation(fields: [class_teacher_id], references: [teacher_id])
+  session          Session      @relation(fields: [session_id], references: [session_id])
+  Enrollments      Enrollment[]
+
+  @@unique([class_name, section])
+}
+
+model Subject {
+  subject_id   Int          @id @default(autoincrement())
+  subject_name String
+  session_id   Int
+  session      Session      @relation(fields: [session_id], references: [session_id])
+  Enrollments  Enrollment[]
+}
+
+model Teacher {
+  teacher_id  Int          @id @default(autoincrement())
+  password    String
+  first_name  String
+  last_name   String?
+  email       String       @unique
+  phone       String?
+  address     String?
+  session_id  Int
+  session     Session      @relation(fields: [session_id], references: [session_id])
+  Enrollments Enrollment[]
+  classes     Class[]
+}
+
+model Enrollment {
+  enrollment_id Int     @id @default(autoincrement())
+  student_id    Int
+  class_id      Int
+  subject_id    Int
+  teacher_id    Int
+  session_id    Int
+  roll_number   String
+  student       Student @relation(fields: [student_id], references: [student_id])
+  class         Class   @relation(fields: [class_id], references: [class_id])
+  subject       Subject @relation(fields: [subject_id], references: [subject_id])
+  teacher       Teacher @relation(fields: [teacher_id], references: [teacher_id])
+  session       Session @relation(fields: [session_id], references: [session_id])
+  marks Mark[]
+  @@unique([student_id, class_id, subject_id, session_id])
+}
+
+model Attendance {
+  attendance_id            Int  @id @default(autoincrement())
+  student_id               Int
+  Half_yearly_total_days   Int?
+  Half_yearly_present_days Int?
+  annual_total_days        Int?
+  annual_present_days      Int?
+  class_teacher_id         Int?
+}
+
+model Mark {
+  markId         Int       @id @default(autoincrement())
+  enrollmentId   Int
+  assessmentType String
+  assessmentDate DateTime
+  marksObtained  Float
+  
+  enrollment     Enrollment @relation(fields: [enrollmentId], references: [enrollmentId])
+}
