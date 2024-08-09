@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
+import StudentsOfEachGrade from './StudentsOfEachGrade';
 
 function SchoolDashboard() {
   const { color } = useTheme();
@@ -34,8 +35,8 @@ function SchoolDashboard() {
   
 
   return (
-    <div className='h-[100vh]'>
-      <div className='h-[6vh] flex justify-center items-center rounded-md gap-2' style={{ backgroundColor: color }}>
+    <div className='h-[100vh] w-full '>
+      <div className=' flex justify-center items-center rounded-md gap-2' style={{ backgroundColor: color }}>
         <div className='lg:text-xl sm:text-lg text-md font-medium text-slate-950 dark:text-slate-300'>
           School Details {year}
         </div>
@@ -61,16 +62,21 @@ function SchoolDashboard() {
           ))}
         </Menu>
       </div>
-      <div className='h-[4vh] w-full bg-slate-200 dark:bg-slate-700 flex justify-around items-center md:text-sm text-[10px] border-b-2 border-slate-500 dark:border-slate-500 overflow-x-scroll'>
-        <div className='flex items-center'><Groups2OutlinedIcon /> Total Enrollment :</div>
-        <div className='flex items-center'><Person2OutlinedIcon /> Total Boys :</div>
-        <div className='flex items-center'><Person3OutlinedIcon /> Total Girls :</div>
+      <div className=' w-full bg-slate-200 dark:bg-slate-700 flex xs:flex-col flex-row justify-around items-center md:text-sm text-[10px] border-b-2 border-slate-500 dark:border-slate-500 '>
+        <div className='flex  items-center'><Groups2OutlinedIcon /> Total Enrollment : 67676</div>
+        <div className='flex items-center'><Person2OutlinedIcon /> Total Boys : 5858</div>
+        <div className='flex items-center'><Person3OutlinedIcon /> Total Girls : 8586</div>
       </div>
       <div className='h-[90vh] grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 md:gap-2 gap-1 lg:p-10 md:p-6 sm:p-4 p-3'>
         {gradeArray.map((val, idx) => (
           <SchoolDashboardCard key={idx} grade={val}  className='col-span-1 row-span-1' />
         ))}
       </div>
+      {/* implement the section also when backentd completed */}
+
+      {/* <div className='w-full   h-auto overflow-scroll'>
+     <StudentsOfEachGrade/>
+      </div> */}
        
         
     </div>
