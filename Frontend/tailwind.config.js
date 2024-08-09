@@ -11,6 +11,9 @@ export default {
       colors: {
         primary: 'var(--color-primary)',
       },
+      screens: {
+        'xs': {'max': '400px'}, // Custom breakpoint for extra small screens
+      },
     },
   },
   plugins: [],

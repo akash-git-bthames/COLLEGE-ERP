@@ -4,6 +4,7 @@ import FirstPage from "./Components/FirstPage";
 
 import DarkLightToggleButton from "./Components/DarkLightToggleButton";
 import HomePage from "./Components/HomePage";
+import Debouncing from "./Components/Debouncing";
 
 function App() {
   const { theme, toggleTheme, color, changeColor } = useTheme();
@@ -13,7 +14,7 @@ function App() {
       <div className="h-12 flex  justify-end items-center gap-4 pr-10">
      
       <DarkLightToggleButton />
-      <input
+      <input    
   type="color"
   id="colorPicker"
   onChange={(e) => changeColor(e.target.value)}
@@ -27,6 +28,7 @@ function App() {
       <div className="h-[100vh] w-full  ">
       {/* <FirstPage /> */}
       <HomePage/>
+    
       </div>
     </div>
   );
