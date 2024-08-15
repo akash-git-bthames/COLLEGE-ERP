@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Drawer from './Drawer';
+import Drawer from '../Components/sidebar/Drawer';
 import HomePageMainContent from './HomePageMainContent';
 
 function HomePage() {

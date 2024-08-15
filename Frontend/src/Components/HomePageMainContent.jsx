@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import SchoolDashboard from "./SchoolDashboard";
-import SchoolProfile from "./SchoolProfile";
-import NewAdmission from "./NewAdmission";
-import SectionShift from "./SectionShift";
-import Result from "./Result";
-import FeeDetails from "./FeeDetails";
-import ProgressActivity from "./ProgressActivity";
-import TC from "./TC";
-import SearchStudent from "./SearchStudent";
-import QuestionPaper from "./QuestionPaper";
+import SchoolDashboard from "./mainContent/SchoolDashboard/SchoolDashboard";
+import SchoolProfile from "./mainContent/SchoolProfile/SchoolProfile";
+import NewAdmission from "./mainContent/NewAdmission/NewAdmission";
+import SectionShift from "./mainContent/SectionShift/SectionShift";
+import Result from "./mainContent/Result/Result";
+import FeeDetails from "./mainContent/FeeDetails/FeeDetails";
+import ProgressActivity from "./mainContent/ProgressActivity/ProgressActivity";
+import TC from "./mainContent/TC/TC";
+import SearchStudent from "./mainContent/SearchStudent/SearchStudent";
+import QuestionPaper from "./mainContent/QuestionPaper/QuestionPaper";
 
 const HomePageMainContent = ({ isOpen, mainContent }) => {
   console.log(mainContent);

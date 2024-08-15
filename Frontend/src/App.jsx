@@ -2,7 +2,7 @@ import React from "react";
 import {useTheme} from './context/ColorContext'
 import FirstPage from "./Components/FirstPage";
 
-import DarkLightToggleButton from "./Components/DarkLightToggleButton";
+import DarkLightToggleButton from "./Components/Atoms/DarkLightToggleButton";
 import HomePage from "./Components/HomePage";
 import Debouncing from "./Components/Debouncing";
 
