@@ -13,6 +13,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model admin {
+  admin_id Int    @id @default(autoincrement())
+  AdminName String @unique
+  password String
+  role     String
+  isLoggedIn Boolean @default(false)
+}
+
+
+
 model Student {
   student_id                                      Int          @id @default(autoincrement())
   first_name                                      String
@@ -22,7 +32,7 @@ model Student {
   email                                           String       @unique
   phone                                           String?
   address                                         String?
-  aadhar_number                                   Int          @unique
+  aadhar_number                                   String          @unique
   Religion                                        String?
   Caste                                           String?
   Blood_group                                     String?
@@ -30,12 +40,12 @@ model Student {
   Previous_school_name                            String?
   PEN_given_by_previous_school                    String?
   Previous_school_UDISE_code                      String?
-  enrollment_date                                 DateTime     @default(now())
-  enrollment_number                               String
+  enrollment_date                                 DateTime
+  enrollment_number                               String     @unique
   PEN_number                                      String?
-  class                                           Int
-  section                                         String?
-  class_Roll_number                               Int
+  currentSClass                                     String?
+  
+  currentSClass_Roll_number                               Int
   // subjects     Subject[]
   // Marks         marks[]
   // attendance      Attendance[]
@@ -43,11 +53,11 @@ model Student {
   fees                                            Fee[]
   //Parents detail
   Father_or_guardian_name                         String?
-  Father_or_guardian_aadhar_number                Int?
-  Father_or_guardian_mobile_number                Int?
+  Father_or_guardian_aadhar_number                String?
+  Father_or_guardian_mobile_number                String
   Father_or_guardian_occupation_and_Qualification String?
   Mother_name                                     String?
-  Mother_phone_number                             Int?
+  Mother_phone_number                             String?
   Father_mother_ration_card_number_and_type       String?
 }
 
@@ -69,31 +79,35 @@ model Session {
   session_name String       @unique
   start_date   DateTime?
   end_date     DateTime?
-  Classes      Class[]
+  Classes      SClass[]
   Subjects     Subject[]
   Teachers     Teacher[]
   Enrollments  Enrollment[]
   fees         Fee[]
 }
 
-model Class {
-  class_id         Int          @id @default(autoincrement())
-  class_name       String
-  class_teacher_id Int
-  section          String
+model SClass {
+  Sclass_id         Int          @id @default(autoincrement())
+  Sclass_name       String
+  Sclass_teacher_id Int
+  
   session_id       Int
-  teacher          Teacher      @relation(fields: [class_teacher_id], references: [teacher_id])
+  teacher          Teacher      @relation(fields: [Sclass_teacher_id], references: [teacher_id])
   session          Session      @relation(fields: [session_id], references: [session_id])
   Enrollments      Enrollment[]
-
-  @@unique([class_name, section])
+  subjects  Subject[]
+  @@unique([Sclass_name])
 }
 
 model Subject {
   subject_id   Int          @id @default(autoincrement())
   subject_name String
   session_id   Int
+  subjectTeacher_id Int 
+  SClass_id Int
+  teacher  Teacher @relation(fields: [subjectTeacher_id],references: [teacher_id])
   session      Session      @relation(fields: [session_id], references: [session_id])
+  class   SClass @relation(fields: [SClass_id],references: [Sclass_id])
   Enrollments  Enrollment[]
 }
 
@@ -108,24 +122,27 @@ model Teacher {
   session_id  Int
   session     Session      @relation(fields: [session_id], references: [session_id])
   Enrollments Enrollment[]
-  classes     Class[]
+  classes     SClass[]
+  Subjects Subject[]
+  isLoggedIn  Boolean @default(false)
 }
 
 model Enrollment {
   enrollment_id Int     @id @default(autoincrement())
   student_id    Int
-  class_id      Int
+  Sclass_id      Int
   subject_id    Int
   teacher_id    Int
   session_id    Int
-  roll_number   String
+  roll_number   String?
   student       Student @relation(fields: [student_id], references: [student_id])
-  class         Class   @relation(fields: [class_id], references: [class_id])
+  class         SClass   @relation(fields: [Sclass_id], references: [Sclass_id])
   subject       Subject @relation(fields: [subject_id], references: [subject_id])
   teacher       Teacher @relation(fields: [teacher_id], references: [teacher_id])
   session       Session @relation(fields: [session_id], references: [session_id])
-  marks Mark[]
-  @@unique([student_id, class_id, subject_id, session_id])
+  marks         Mark[]
+
+  @@unique([student_id, Sclass_id, subject_id, session_id])
 }
 
 model Attendance {
@@ -135,15 +152,17 @@ model Attendance {
   Half_yearly_present_days Int?
   annual_total_days        Int?
   annual_present_days      Int?
-  class_teacher_id         Int?
+  Sclass_teacher_id         Int?
 }
 
 model Mark {
   markId         Int       @id @default(autoincrement())
-  enrollmentId   Int
-  assessmentType String
-  assessmentDate DateTime
-  marksObtained  Float
-  
-  enrollment     Enrollment @relation(fields: [enrollmentId], references: [enrollmentId])
+  enrollment_id  Int
+  assessmentType String   // e.g., "Half-yearly", "Annual"
+  assessmentDate DateTime?
+  totalMarksOfSubject Float?
+  marksObtained  Float?
+
+  enrollment Enrollment @relation(fields: [enrollment_id], references: [enrollment_id])
+  @@unique([enrollment_id, assessmentType])
 }
