@@ -15,7 +15,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Fade from "@mui/material/Fade";
 import ArrowDropDownCircleOutlinedIcon from "@mui/icons-material/ArrowDropDownCircleOutlined";
 import { useTheme } from "../context/ColorContext";
-import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
+import MenuIcon from '@mui/icons-material/Menu';
 
 
 
@@ -84,9 +84,9 @@ const HomePageMainContent = ({ isOpen, mainContent,isClickedRightIcon }) => {
     >
 
 
-        <div className={`absolute top-2 left-1 `} onClick={isClickedRightIcon}>
+        <div className={`absolute top-2 left-1 bg-[rgba(30,41,59,0.2)] p-1 rounded-md `} onClick={isClickedRightIcon}>
           
-          <ArrowForwardOutlinedIcon  />
+          <MenuIcon/>
         </div>
 
 
