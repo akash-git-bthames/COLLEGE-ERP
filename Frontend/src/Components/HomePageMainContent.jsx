@@ -84,7 +84,7 @@ const HomePageMainContent = ({ isOpen, mainContent }) => {
     >
 
 
-        <div className={`absolute top-2 `}>
+        <div className={`absolute top-2 left-1`}>
           
           <ArrowForwardOutlinedIcon />
         </div>
