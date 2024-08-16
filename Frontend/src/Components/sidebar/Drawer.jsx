@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
-import {useTheme} from '../context/ColorContext'
-import SidebarCells from './SidebarCells';
+import {useTheme} from '../../context/ColorContext'
+import SidebarCells from '../Atoms/SidebarCells';
 import DvrOutlinedIcon from '@mui/icons-material/DvrOutlined';
 import MapsHomeWorkOutlinedIcon from '@mui/icons-material/MapsHomeWorkOutlined';
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';

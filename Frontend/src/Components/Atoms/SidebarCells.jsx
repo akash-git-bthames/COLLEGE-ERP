@@ -1,5 +1,5 @@
 import React from "react";
-import {useTheme} from '../context/ColorContext'
+import {useTheme} from '../../context/ColorContext'
 
 function SidebarCells({ name, isOpen,icon,setClickCell }) {
   

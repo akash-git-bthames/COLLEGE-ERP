@@ -1,8 +1,8 @@
 import React from "react";
-import { useTheme } from "../context/ColorContext";
-function SchoolDashboardCard({grade}) {
+import { useTheme } from "../../../context/ColorContext";
+function SchoolDashboardCard({ grade }) {
   const { color } = useTheme();
-  
+
   const totalBoys = 250;
   const totalGirls = 150;
   const sections = ["A", "B", "C", "D"];
