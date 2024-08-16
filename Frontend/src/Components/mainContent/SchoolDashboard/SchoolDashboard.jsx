@@ -99,7 +99,7 @@ function SchoolDashboard() {
           <Person3OutlinedIcon /> Total Girls : 8586
         </div>
       </div>
-      <div className="h-[90vh] grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 md:gap-2 gap-1 lg:p-10 md:p-6 sm:p-4 p-3">
+      <div className="h-[90vh] grid xl:grid-cols-5 lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 md:gap-2 gap-1 lg:p-8 md:p-5 sm:p-3 p-2 overflow-y-scroll">
         {gradeArray.map((val, idx) => (
           <SchoolDashboardCard
             key={idx}

@@ -11,7 +11,7 @@ function HomePage() {
   };
 
   return (
-    <div className="w-full h-[100vh] flex gap-1">
+    <div className="w-full  flex gap-1">
       <Drawer isOpen={isOpen} toggleDrawer={toggleDrawer} setClickCell={setMainContent}/>
       <HomePageMainContent isOpen={isOpen} mainContent={mainContent}/>
     </div>
