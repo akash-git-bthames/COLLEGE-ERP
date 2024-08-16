@@ -19,7 +19,7 @@ import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 
 
 
-const HomePageMainContent = ({ isOpen, mainContent }) => {
+const HomePageMainContent = ({ isOpen, mainContent,isClickedRightIcon }) => {
   const { color } = useTheme();
   const [year, setYear] = useState("current");
 
@@ -84,9 +84,9 @@ const HomePageMainContent = ({ isOpen, mainContent }) => {
     >
 
 
-        <div className={`absolute top-2 left-1`}>
+        <div className={`absolute top-2 left-1 `} onClick={isClickedRightIcon}>
           
-          <ArrowForwardOutlinedIcon />
+          <ArrowForwardOutlinedIcon  />
         </div>
 
 

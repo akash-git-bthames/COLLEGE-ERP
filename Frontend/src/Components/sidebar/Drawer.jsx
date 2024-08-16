@@ -17,7 +17,7 @@ import AutoStoriesOutlinedIcon from '@mui/icons-material/AutoStoriesOutlined';
 
 
 
-const Drawer = ({isOpen,toggleDrawer,setClickCell}) => {
+const Drawer = ({isOpen,toggleDrawer,setClickCell,isClickedRightIconVal}) => {
   
  const {color}=useTheme();
  const name =['School Dashboard', 'School Profile', 'New Admission', 'Section Shift','Result','Fee Details','Progress Activity','TC','Search Student','Question Paper']
