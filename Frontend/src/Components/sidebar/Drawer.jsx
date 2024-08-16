@@ -31,9 +31,9 @@ const Drawer = ({isOpen,toggleDrawer,setClickCell}) => {
        
       
       <div
-        className={`sm:static absolute flex flex-col h-[100vh]    dark:bg-slate-800 bg-slate-200 border-t-2 border-r-2 border-b-2  border-slate-500 rounded-tr-lg rounded-br-lg  text-white 
+        className={`msm:absolute msm:z-10 flex flex-col h-[100vh]    dark:bg-slate-800 bg-slate-200 border-t-2 border-r-2 border-b-2  border-slate-500 rounded-tr-lg rounded-br-lg  text-white 
         
-         transition-all transform  duration-200  `} 
+         transition-all transform  duration-200  ${isOpen?'msm:translate-x-auto':'msm:-translate-x-10'} `} 
       >
        <div className='flex justify-end items-center p-1'>
        <button
