@@ -84,7 +84,7 @@ const HomePageMainContent = ({ isOpen, mainContent,isClickedRightIcon }) => {
     >
 
 
-        <div className={`absolute top-2 left-1 bg-[rgba(30,41,59,0.2)] p-1 rounded-md `} onClick={isClickedRightIcon}>
+        <div className={` sm:hidden absolute top-2 left-1 bg-[rgba(30,41,59,0.2)] p-1 rounded-md `} onClick={isClickedRightIcon}>
           
           <MenuIcon/>
         </div>
