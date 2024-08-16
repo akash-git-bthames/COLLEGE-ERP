@@ -13,6 +13,7 @@ export default {
       },
       screens: {
         'xs': {'max': '400px'}, // Custom breakpoint for extra small screens
+        'msm':{'max':'640px'},
       },
     },
   },
