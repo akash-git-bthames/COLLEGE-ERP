@@ -5,11 +5,22 @@ import Backdrop from "@mui/material/Backdrop";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Box from "@mui/material/Box";
+import CloseIcon from '@mui/icons-material/Close';
+import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
+import CheckBoxOutlineBlankOutlinedIcon from '@mui/icons-material/CheckBoxOutlineBlankOutlined';
 
 function NewAdmission() {
   const { color, theme } = useTheme();
   const [openPreview, setOpenPreview] = useState(false);
   const [previewUrl, setPreviewUrl] = useState(null);
+  const [isTicked, setIsTicked] = useState(false);
+
+
+
+  const handleTicked = () => {
+
+    setIsTicked(!isTicked);
+  };
 
   const studentDetails = [
     { label: "Student Name", data: "studentName", type: "text" },
@@ -102,6 +113,49 @@ function NewAdmission() {
     studentPhoto: "",
   });
 
+
+ const previewLabel =[
+  "Student Name",
+  "Adhar Number",
+  "Mobile No.",
+  "Full Address",
+  "Date Of Birth",
+  "Bank Account No.",
+  "Bank IFSC Code",
+  "Bank Name",
+  "Student Category",
+  "Religion",
+  "Nationality",
+  "Last School Name",
+  "Last School UIDAS No",
+  "PEN No.",
+  "Email Address",
+  "Parents Ration Card No.",
+  "Ration Card Type",
+  "Student Weight",
+  "Student Length",
+  "Student Blood Group",
+  "Father Name",
+  "Father Occupation",
+  "Father Mobile Number",
+  "Father Adhar Number",
+  "Father Education",
+  "Mother Name",
+  "Mother Occupation",
+  "Mother Adhar No.",
+  "Mother Education",
+  "Guardian Name",
+  "Guardian Occupation",
+  "Guardian Mobile Number",
+  "Student Photo"
+]
+
+
+
+
+
+
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -183,8 +237,6 @@ function NewAdmission() {
           </div>
         </div>
 
-    
-
         <form
           onSubmit={handleSubmit}
           className="sm:max-w-[80vw] msm:max-w-[90vw] border border-slate-400/40  mx-auto p-8  shadow-md shadow-slate-950/20  mt-7 bg-slate-100/50 dark:bg-slate-800/50 duration-200"
@@ -209,8 +261,6 @@ function NewAdmission() {
                 </div>
               );
             })}
-
-            {/* Add more fields similarly for other student details */}
           </div>
 
           {/* Father's Section */}
@@ -281,43 +331,36 @@ function NewAdmission() {
 
           {/*photo upload section*/}
 
-         
+          <h2 className="text-xl font-semibold mt-8 mb-4">
+            Upload Student Photo
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 duration-200">
+                Student Photo
+              </label>
+              <input
+                type="file"
+                name="studentPhoto"
+                onChange={handleFileChange}
+                className="mt-1 block w-full border border-slate-500/50 bg-slate-100 dark:bg-slate-700/30 outline-none rounded-md p-2 transition-all duration-200 text-lg"
+                accept="image/*"
+              />
 
-          <h2 className="text-xl font-semibold mt-8 mb-4">Upload Student Photo</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-        <div>
-          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 duration-200">
-            Student Photo
-          </label>
-          <input
-            type="file"
-            name="studentPhoto"
-            onChange={handleFileChange}
-            className="mt-1 block w-full border border-slate-500/50 bg-slate-100 dark:bg-slate-700/30 outline-none rounded-md p-2 transition-all duration-200 text-lg"
-            accept="image/*"
-          />
-
-          
-{previewUrl && (
-          <div className="mt-3">
-            <label className="block text-sm  text-center font-medium text-slate-700 dark:text-slate-300 duration-200">
-              Photo Preview
-            </label>
-            <img
-              src={previewUrl}
-              alt="Photo Preview"
-              className="m-auto max-w-full lg:h-96 md:h-80 sm:h-64 msm:h-56 mt-2 border border-slate-500/50 rounded-md shadow-md shadow-slate-950/50 "
-            />
+              {previewUrl && (
+                <div className="mt-3">
+                  <label className="block text-sm  text-center font-medium text-slate-700 dark:text-slate-300 duration-200">
+                    Photo Preview
+                  </label>
+                  <img
+                    src={previewUrl}
+                    alt="Photo Preview"
+                    className="m-auto max-w-full lg:h-96 md:h-80 sm:h-64 msm:h-56 mt-2 border border-slate-500/50 rounded-md shadow-md shadow-slate-950/50 "
+                  />
+                </div>
+              )}
+            </div>
           </div>
-        )}
-
-        </div>
-
-        
-      </div>
-
-
-
 
           {/* Buttons */}
           <div className="mt-8 flex space-x-4  justify-center items-center text-slate-950 dark:text-slate-100">
@@ -335,21 +378,7 @@ function NewAdmission() {
             </Button>
           </div>
         </form>
-
-
-
-
-
-
-
-
-
-
-
       </div>
-
-
-
 
       <Modal
         open={openPreview}
@@ -365,26 +394,61 @@ function NewAdmission() {
         }}
         disableScrollLock={true}
       >
-        <Fade in={true}>
-          <Box className=" absolute h-[100vh] w-[100vw] overflow-y-scroll md:pt-20 pt-16">
-            <div
-              className=" w-[80vw] m-auto  bg-slate-100/80 dark:bg-slate-800/80 text-slate-900 dark:text-slate-200 border-[1px] rounded-lg flex flex-col gap-5 py-6 shadow-lg dark:hover:shadow-slate-600 hover:shadow-slate-400 duration-200"
-              style={{ borderColor: color }}
-            >
+        <Fade in={openPreview}>
+        <Box className="absolute h-[100vh] w-[100vw] overflow-y-scroll md:py-20 py-16 ">
+  <div
+    className="lg:w-[80vw] w-[90vw] m-auto bg-slate-100/80 dark:bg-slate-800/80 text-slate-900 dark:text-slate-200 border-[1px] rounded-lg py-8 lg:px-12 sm:px-8 msm:px-4 shadow-lg dark:hover:shadow-slate-600 hover:shadow-slate-400 duration-200 relative "
+    style={{ borderColor: color }}
+  >
+   <div className="absolute top-1 right-1 hover:cursor-pointer">
+  <Button sx={{ color: 'red'}} onClick={handleClosePreview}>
+    <CloseIcon />
+  </Button>
+</div>
 
-             
-            
+    <div className="lg:text-3xl md:text-2xl text-xl font-bold text-center">
+      Form Preview
+    </div>
+    <div className="grid grid-cols-1 py-8  md:grid-cols-2 gap-5">
+      {Object.entries(formData).map(([key, value], id) => {
+        if(key!=='studentPhoto')return <div key={id} className="col-span-1">
+          <label className="text-md font-normal text-slate-700 dark:text-slate-300 duration-200">
+            {previewLabel[id]}
+          </label>{" "}
+          :{" "}
+          <span className="w-full sm:pr-4 transition-all text-lg font-medium text-slate-700 dark:text-slate-300 duration-200">
+            {value}
+          </span>
+        </div>
+})}
 
 
 
+<div className="col-span-1 ">
+        <h3 className="textmd font-semibold">Student Photo</h3>
+        <img
+          src={URL.createObjectURL(formData.studentPhoto)}
+          alt="Student Photo"
+          className="w-52 h-48 object-cover rounded-lg shadow-md shadow-slate-950/50"
+        />
+      </div>
 
 
+    </div>
 
 
+    <div className="flex gap-1">
 
+     <div className="hover:cursor-pointer"> {isTicked?<CheckBoxOutlinedIcon  style={{color:color}} onClick={handleTicked}/>:<CheckBoxOutlineBlankOutlinedIcon  onClick={handleTicked}/> }</div>
+      <p>Ensure that carefuly preview All field</p>
+    </div>
+    <div className=" w-full flex justify-evenly  items-center h-20">
 
-            </div>
-          </Box>
+    <Button variant="outlined" sx={{color:'red', borderColor:'red','&:hover':{borderColor:'red'}}} onClick={handleClosePreview}>Cancel</Button> {isTicked?<Button variant="contained">submit</Button>:<Button variant="contained" disabled>Submit</Button>}
+    </div>
+  </div>
+</Box>
+
         </Fade>
       </Modal>
     </div>
