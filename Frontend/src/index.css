@@ -143,3 +143,6 @@ ul li:first-child {
 
 
 /* classes animation******************************************* */
+option:hover {
+  background: red;
+}
