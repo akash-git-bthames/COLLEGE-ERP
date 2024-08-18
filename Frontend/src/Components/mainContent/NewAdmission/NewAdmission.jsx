@@ -107,13 +107,13 @@ function NewAdmission() {
 
   return (
     <div className="">
-      <div className="sm:text-sm font-medium msm:text-xs msm:text-center border-b border-slate-400/70">
+      <div className="sm:text-sm font-medium msm:text-xs msm:text-center border-b border-slate-400/70 p-1">
         Total New Admission This Year :{" "}
         <span style={{ color: color }}>450</span>
       </div>
       <div className=" p-5">
-        <div className="text-center text-2xl font-medium">Admission Form</div>
-        <div className="flex flex-col border border-slate-400/40 sm:max-w-[80vw] msm:max-w-[90vw] m-auto sm:h-20 msm:h-40  bg-slate-100/50 dark:bg-slate-800/50 shadow-md shadow-slate-900/10 sm:flex-row justify-evenly font-medium mt-10 text-lg items-center">
+        {/* <div className="text-center text-2xl font-medium">Admission Form</div> */}
+        <div className="flex flex-col border border-slate-400/40 sm:max-w-[80vw] msm:max-w-[90vw] m-auto sm:h-20 msm:h-40  bg-slate-100/50 dark:bg-slate-800/50 shadow-md shadow-slate-900/10 sm:flex-row justify-evenly font-medium mt-5 text-lg items-center">
           <div>
             Choose Class :{" "}
             <select
