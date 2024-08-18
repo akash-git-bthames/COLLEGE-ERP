@@ -355,7 +355,7 @@ function NewAdmission() {
                   <img
                     src={previewUrl}
                     alt="Photo Preview"
-                    className="w-72 h-60 object-cover mt-2 border border-slate-500/50 rounded-md shadow-md shadow-slate-950/50 "
+                    className="lg:h-96 md:h-80 sm:h-72 msm:h-60 object-cover mt-2 border border-slate-500/50 rounded-md shadow-md shadow-slate-950/50 "
                   />
                 </div>
               )}
@@ -429,7 +429,7 @@ function NewAdmission() {
         <img
           src={URL.createObjectURL(formData.studentPhoto)}
           alt="Student Photo"
-          className="w-52 h-48 object-cover rounded-lg shadow-md shadow-slate-950/50"
+          className="lg:h-96 md:h-80 sm:h-72 msm:h-60 object-cover rounded-lg shadow-md shadow-slate-950/50"
         />
       </div>}
 
