@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useTheme } from "../../../context/ColorContext";
+import { Button } from "@mui/material";
 
 function NewAdmission() {
-  const { color } = useTheme();
+  const { color,theme } = useTheme();
 
   const studentDetails = [
     { label: "Student Name", data: "studentName", type: "text" },
@@ -249,19 +250,9 @@ function NewAdmission() {
           </div>
 
           {/* Buttons */}
-          <div className="mt-8 flex justify-end space-x-4">
-            <button
-              type="button"
-              className="bg-gray-600 text-white px-4 py-2 rounded-md"
-            >
-              Preview
-            </button>
-            <button
-              type="submit"
-              className="bg-blue-600 text-white px-4 py-2 rounded-md"
-            >
-              Save
-            </button>
+          <div className="mt-8 flex space-x-4  justify-center items-center text-slate-950 dark:text-slate-100">
+           
+            <Button variant="contained" sx={{backgroundColor:color,'&:hover':{backgroundColor:color},color:theme==='dark'?'rgb(241 245 249)':'rgb(2 6 23)'}}>Preview & Submit </Button>
           </div>
         </form>
       </div>
