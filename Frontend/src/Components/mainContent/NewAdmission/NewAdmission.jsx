@@ -416,7 +416,7 @@ function NewAdmission() {
             {previewLabel[id]}
           </label>{" "}
           :{" "}
-          <span className="w-full sm:pr-4 transition-all text-lg font-medium text-slate-700 dark:text-slate-300 duration-200">
+          <span className="w-full sm:pr-4 transition-all text-lg font-medium text-slate-700 dark:text-slate-300 duration-200 text-wrap">
             {value}
           </span>
         </div>
