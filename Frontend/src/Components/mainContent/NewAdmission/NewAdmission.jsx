@@ -198,7 +198,7 @@ function NewAdmission() {
       </div>
       <div className=" p-5">
         {/* <div className="text-center text-2xl font-medium">Admission Form</div> */}
-        <div className="flex flex-col border border-slate-400/40 sm:max-w-[80vw] msm:max-w-[90vw] m-auto sm:h-20 msm:h-40  bg-slate-100/50 dark:bg-slate-800/50 shadow-md shadow-slate-900/10 sm:flex-row justify-evenly font-medium mt-5 text-lg items-center">
+        <div className="flex flex-col border border-slate-400/40 sm:max-w-[80vw] msm:max-w-[90vw] m-auto sm:h-20 msm:h-40  bg-slate-100/50 dark:bg-slate-800/50 shadow-md shadow-slate-900/10 sm:flex-row justify-evenly font-medium mt-5 text-lg items-center duration-200">
           <div>
             Choose Class :{" "}
             <select
