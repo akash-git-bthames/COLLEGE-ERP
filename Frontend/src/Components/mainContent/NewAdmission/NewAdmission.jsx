@@ -349,13 +349,13 @@ function NewAdmission() {
 
               {previewUrl && (
                 <div className="mt-3">
-                  <label className="block text-sm  text-center font-medium text-slate-700 dark:text-slate-300 duration-200">
+                  <label className="block text-sm   font-medium text-slate-700 dark:text-slate-300 duration-200">
                     Photo Preview
                   </label>
                   <img
                     src={previewUrl}
                     alt="Photo Preview"
-                    className="m-auto max-w-full lg:h-96 md:h-80 sm:h-64 msm:h-56 mt-2 border border-slate-500/50 rounded-md shadow-md shadow-slate-950/50 "
+                    className="w-72 h-60 object-cover mt-2 border border-slate-500/50 rounded-md shadow-md shadow-slate-950/50 "
                   />
                 </div>
               )}
@@ -424,14 +424,14 @@ function NewAdmission() {
 
 
 
-<div className="col-span-1 ">
+{formData.studentPhoto && <div className="col-span-1 ">
         <h3 className="textmd font-semibold">Student Photo</h3>
         <img
           src={URL.createObjectURL(formData.studentPhoto)}
           alt="Student Photo"
           className="w-52 h-48 object-cover rounded-lg shadow-md shadow-slate-950/50"
         />
-      </div>
+      </div>}
 
 
     </div>
