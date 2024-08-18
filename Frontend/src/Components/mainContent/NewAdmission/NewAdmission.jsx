@@ -181,12 +181,12 @@ function NewAdmission() {
 
           {/* Father's Section */}
           <h2 className="text-xl font-semibold mt-8 mb-4">Father Details</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 ">
             {fatherDetails.map((item, key) => {
               const fromDataVal = item.data;
               return (
                 <div key={key}>
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 duration-200">
                     {item.label}
                   </label>
                   <input
@@ -194,21 +194,22 @@ function NewAdmission() {
                     name={item.data}
                     onChange={handleChange}
                     value={formData.formDataVal}
-                    className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                    className="mt-1 block w-full border border-slate-500/50 bg-slate-100 dark:bg-slate-700/30 outline-none rounded-md p-2 transition-all duration-200 text-lg"
                   />
                 </div>
               );
             })}
+
           </div>
 
           {/* Mother's Section */}
           <h2 className="text-xl font-semibold mt-8 mb-4">Mother Details</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 ">
             {motherDetails.map((item, key) => {
               const fromDataVal = item.data;
               return (
                 <div key={key}>
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 duration-200">
                     {item.label}
                   </label>
                   <input
@@ -216,23 +217,22 @@ function NewAdmission() {
                     name={item.data}
                     onChange={handleChange}
                     value={formData.formDataVal}
-                    className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                    className="mt-1 block w-full border border-slate-500/50 bg-slate-100 dark:bg-slate-700/30 outline-none rounded-md p-2 transition-all duration-200 text-lg"
                   />
                 </div>
               );
             })}
 
-            {/* Add more fields similarly for other student details */}
           </div>
 
           {/* Guardian Section */}
           <h2 className="text-xl font-semibold mt-8 mb-4">Guardian Details</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 ">
             {guardianDetails.map((item, key) => {
               const fromDataVal = item.data;
               return (
                 <div key={key}>
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 duration-200">
                     {item.label}
                   </label>
                   <input
@@ -240,13 +240,12 @@ function NewAdmission() {
                     name={item.data}
                     onChange={handleChange}
                     value={formData.formDataVal}
-                    className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                    className="mt-1 block w-full border border-slate-500/50 bg-slate-100 dark:bg-slate-700/30 outline-none rounded-md p-2 transition-all duration-200 text-lg"
                   />
                 </div>
               );
             })}
 
-            {/* Add more fields similarly for other student details */}
           </div>
 
           {/* Buttons */}
