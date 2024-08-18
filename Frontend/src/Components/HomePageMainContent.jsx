@@ -91,7 +91,7 @@ const HomePageMainContent = ({ isOpen, mainContent,isClickedRightIcon }) => {
 
 
       <div
-        className="h-8 msm:h-12 flex justify-center items-center  gap-2"
+        className="h-10 msm:h-12 flex justify-center items-center  gap-2"
         style={{ backgroundColor: color }}
       >
         <div className="sm:text-xl text-lg  font-medium text-slate-950 dark:text-slate-300">
