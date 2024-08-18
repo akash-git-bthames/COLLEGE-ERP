@@ -107,7 +107,7 @@ function NewAdmission() {
 
   return (
     <div className="">
-      <div className="sm:text-sm font-medium msm:text-xs  border-b border-slate-400/70">
+      <div className="sm:text-sm font-medium msm:text-xs msm:text-center border-b border-slate-400/70">
         Total New Admission This Year :{" "}
         <span style={{ color: color }}>450</span>
       </div>
