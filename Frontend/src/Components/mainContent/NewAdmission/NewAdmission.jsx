@@ -112,7 +112,7 @@ function NewAdmission() {
       </div>
       <div className=" p-5">
         <div className="text-center text-2xl font-medium">Admission Form</div>
-        <div className="flex flex-col sm:flex-row justify-between gap-6 sm:justify-evenly font-medium mt-10 text-lg items-center">
+        <div className="flex flex-col border border-slate-400/40 sm:max-w-[80vw] msm:max-w-[90vw] m-auto sm:h-20 msm:h-40  bg-slate-100/50 dark:bg-slate-800/50 shadow-md shadow-slate-900/10 sm:flex-row justify-evenly font-medium mt-10 text-lg items-center">
           <div>
             Choose Class :{" "}
             <select
@@ -153,7 +153,7 @@ function NewAdmission() {
 
         <form
           onSubmit={handleSubmit}
-          className="sm:max-w-[80vw] msm:max-w-[90vw]  mx-auto p-8  shadow-lg shadow-slate-950 rounded-lg mt-10 bg-slate-100/50 dark:bg-slate-700/50 duration-200"
+          className="sm:max-w-[80vw] msm:max-w-[90vw] border border-slate-400/40  mx-auto p-8  shadow-md shadow-slate-950/20  mt-10 bg-slate-100/50 dark:bg-slate-800/50 duration-200"
         >
           {/* Student Section */}
           <h2 className="text-xl font-semibold mb-4">Student Details</h2>
@@ -170,7 +170,7 @@ function NewAdmission() {
                     name={item.data}
                     onChange={handleChange}
                     value={formData.formDataVal}
-                    className="mt-1 block w-full border border-slate-500/50 bg-slate-100 dark:bg-slate-700/30 outline-none rounded-md p-2 transition-all duration-200"
+                    className="mt-1 block w-full border border-slate-500/50 bg-slate-100 dark:bg-slate-700/30 outline-none rounded-md p-2 transition-all duration-200 text-lg"
                   />
                 </div>
               );
