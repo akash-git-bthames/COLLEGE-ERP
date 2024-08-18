@@ -112,7 +112,7 @@ function NewAdmission() {
       </div>
       <div className=" p-5">
         <div className="text-center text-2xl font-medium">Admission Form</div>
-        <div className="flex justify-evenly font-medium mt-10 text-lg items-center">
+        <div className="flex flex-col sm:flex-row justify-between gap-6 sm:justify-evenly font-medium mt-10 text-lg items-center">
           <div>
             Choose Class :{" "}
             <select
@@ -153,11 +153,11 @@ function NewAdmission() {
 
         <form
           onSubmit={handleSubmit}
-          className="max-w-[80vw] mx-auto p-8  shadow-lg shadow-slate-950 rounded-lg mt-5 bg-slate-100/50 dark:bg-slate-700/50 duration-200"
+          className="sm:max-w-[80vw] msm:max-w-[90vw]  mx-auto p-8  shadow-lg shadow-slate-950 rounded-lg mt-10 bg-slate-100/50 dark:bg-slate-700/50 duration-200"
         >
           {/* Student Section */}
           <h2 className="text-xl font-semibold mb-4">Student Details</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 ">
             {studentDetails.map((item, key) => {
               const fromDataVal = item.data;
               return (
