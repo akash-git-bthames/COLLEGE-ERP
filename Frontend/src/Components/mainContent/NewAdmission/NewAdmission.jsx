@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTheme } from "../../../context/ColorContext";
 import { Button } from "@mui/material";
+import Backdrop from "@mui/material/Backdrop";
+import Modal from "@mui/material/Modal";
+import Fade from "@mui/material/Fade";
+import Box from "@mui/material/Box";
 
 function NewAdmission() {
-  const { color,theme } = useTheme();
+  const { color, theme } = useTheme();
+  const [openPreview, setOpenPreview] = useState(false);
+  const [previewUrl, setPreviewUrl] = useState(null);
 
   const studentDetails = [
     { label: "Student Name", data: "studentName", type: "text" },
@@ -93,6 +99,7 @@ function NewAdmission() {
     guardianName: "",
     guardianAddress: "",
     guardianMobileNo: "",
+    studentPhoto: "",
   });
 
   const handleChange = (e) => {
@@ -104,6 +111,30 @@ function NewAdmission() {
     console.log("Form Data: ", formData);
     // Logic to save or preview data
   };
+
+  const handlePreviewClick = () => {
+        setOpenPreview(true);
+  };
+
+  const handleClosePreview = () => {
+    setOpenPreview(false);
+  };
+
+
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setFormData({ ...formData, studentPhoto: file });
+
+      // Generate a preview URL for the selected image
+      const preview = URL.createObjectURL(file);
+      setPreviewUrl(preview);
+    }
+  };
+
+
+ 
 
   return (
     <div className="">
@@ -152,9 +183,11 @@ function NewAdmission() {
           </div>
         </div>
 
+    
+
         <form
           onSubmit={handleSubmit}
-          className="sm:max-w-[80vw] msm:max-w-[90vw] border border-slate-400/40  mx-auto p-8  shadow-md shadow-slate-950/20  mt-10 bg-slate-100/50 dark:bg-slate-800/50 duration-200"
+          className="sm:max-w-[80vw] msm:max-w-[90vw] border border-slate-400/40  mx-auto p-8  shadow-md shadow-slate-950/20  mt-7 bg-slate-100/50 dark:bg-slate-800/50 duration-200"
         >
           {/* Student Section */}
           <h2 className="text-xl font-semibold mb-4">Student Details</h2>
@@ -200,7 +233,6 @@ function NewAdmission() {
                 </div>
               );
             })}
-
           </div>
 
           {/* Mother's Section */}
@@ -223,7 +255,6 @@ function NewAdmission() {
                 </div>
               );
             })}
-
           </div>
 
           {/* Guardian Section */}
@@ -246,16 +277,116 @@ function NewAdmission() {
                 </div>
               );
             })}
-
           </div>
+
+          {/*photo upload section*/}
+
+         
+
+          <h2 className="text-xl font-semibold mt-8 mb-4">Upload Student Photo</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div>
+          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 duration-200">
+            Student Photo
+          </label>
+          <input
+            type="file"
+            name="studentPhoto"
+            onChange={handleFileChange}
+            className="mt-1 block w-full border border-slate-500/50 bg-slate-100 dark:bg-slate-700/30 outline-none rounded-md p-2 transition-all duration-200 text-lg"
+            accept="image/*"
+          />
+
+          
+{previewUrl && (
+          <div className="mt-3">
+            <label className="block text-sm  text-center font-medium text-slate-700 dark:text-slate-300 duration-200">
+              Photo Preview
+            </label>
+            <img
+              src={previewUrl}
+              alt="Photo Preview"
+              className="m-auto max-w-full h-96 mt-2 border border-slate-500/50 rounded-md shadow-md shadow-slate-950/50 "
+            />
+          </div>
+        )}
+
+        </div>
+
+        
+      </div>
+
+
+
 
           {/* Buttons */}
           <div className="mt-8 flex space-x-4  justify-center items-center text-slate-950 dark:text-slate-100">
-           
-            <Button variant="contained" sx={{backgroundColor:color,'&:hover':{backgroundColor:color},color:theme==='dark'?'rgb(241 245 249)':'rgb(2 6 23)'}}>Preview & Submit </Button>
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{
+                backgroundColor: color,
+                "&:hover": { backgroundColor: color },
+                color: theme === "dark" ? "rgb(241 245 249)" : "rgb(2 6 23)",
+              }}
+              onClick={handlePreviewClick}
+            >
+              Preview & Submit{" "}
+            </Button>
           </div>
         </form>
+
+
+
+
+
+
+
+
+
+
+
       </div>
+
+
+
+
+      <Modal
+        open={openPreview}
+        onClose={handleClosePreview}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+          sx: {
+            backdropFilter: "blur(3px)", // Add blur effect
+            backgroundColor: "rgba(0, 0, 0, 0.5)", // Add background color with transparency
+          },
+        }}
+        disableScrollLock={true}
+      >
+        <Fade in={true}>
+          <Box className=" absolute h-[100vh] w-[100vw] overflow-y-scroll md:pt-20 pt-16">
+            <div
+              className=" w-[80vw] m-auto  bg-slate-100/80 dark:bg-slate-800/80 text-slate-900 dark:text-slate-200 border-[1px] rounded-lg flex flex-col gap-5 py-6 shadow-lg dark:hover:shadow-slate-600 hover:shadow-slate-400 duration-200"
+              style={{ borderColor: color }}
+            >
+
+             
+            
+
+
+
+
+
+
+
+
+
+            </div>
+          </Box>
+        </Fade>
+      </Modal>
     </div>
   );
 }
