@@ -306,7 +306,7 @@ function NewAdmission() {
             <img
               src={previewUrl}
               alt="Photo Preview"
-              className="m-auto max-w-full h-96 mt-2 border border-slate-500/50 rounded-md shadow-md shadow-slate-950/50 "
+              className="m-auto max-w-full lg:h-96 md:h-80 sm:h-64 msm:h-56 mt-2 border border-slate-500/50 rounded-md shadow-md shadow-slate-950/50 "
             />
           </div>
         )}
