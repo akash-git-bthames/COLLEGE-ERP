@@ -406,17 +406,17 @@ function NewAdmission() {
   </Button>
 </div>
 
-    <div className="lg:text-3xl md:text-2xl text-xl font-bold text-center">
+    <div className="lg:text-3xl md:text-2xl text-xl font-bold text-center ">
       Form Preview
     </div>
-    <div className="grid grid-cols-1 py-8  md:grid-cols-2 gap-5">
+    <div className="grid grid-cols-1 py-8  md:grid-cols-2 gap-5  ">
       {Object.entries(formData).map(([key, value], id) => {
-        if(key!=='studentPhoto')return <div key={id} className="col-span-1">
-          <label className="text-md font-normal text-slate-700 dark:text-slate-300 duration-200">
+        if(key!=='studentPhoto')return <div key={id} className="col-span-1  text-wrap break-words  ">
+          <label className="text-md px-1 font-normal text-slate-700 dark:text-slate-300 duration-200 text-nowrap">
             {previewLabel[id]}
-          </label>{" "}
-          :{" "}
-          <span className="w-full sm:pr-4 transition-all text-lg font-medium text-slate-700 dark:text-slate-300 duration-200 text-wrap">
+          </label>
+          :
+          <span className="px-1  transition-all text-lg font-medium text-slate-700 dark:text-slate-300 duration-200 ">
             {value}
           </span>
         </div>
