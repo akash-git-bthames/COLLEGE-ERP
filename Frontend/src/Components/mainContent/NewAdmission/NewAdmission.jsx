@@ -5,20 +5,18 @@ import Backdrop from "@mui/material/Backdrop";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Box from "@mui/material/Box";
-import CloseIcon from '@mui/icons-material/Close';
-import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
-import CheckBoxOutlineBlankOutlinedIcon from '@mui/icons-material/CheckBoxOutlineBlankOutlined';
+import CloseIcon from "@mui/icons-material/Close";
+import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
+import CheckBoxOutlineBlankOutlinedIcon from "@mui/icons-material/CheckBoxOutlineBlankOutlined";
 
 function NewAdmission() {
   const { color, theme } = useTheme();
+  const [fileUploadError,setFileUploadError]=useState(null);
   const [openPreview, setOpenPreview] = useState(false);
   const [previewUrl, setPreviewUrl] = useState(null);
   const [isTicked, setIsTicked] = useState(false);
 
-
-
   const handleTicked = () => {
-
     setIsTicked(!isTicked);
   };
 
@@ -113,48 +111,41 @@ function NewAdmission() {
     studentPhoto: "",
   });
 
-
- const previewLabel =[
-  "Student Name",
-  "Adhar Number",
-  "Mobile No.",
-  "Full Address",
-  "Date Of Birth",
-  "Bank Account No.",
-  "Bank IFSC Code",
-  "Bank Name",
-  "Student Category",
-  "Religion",
-  "Nationality",
-  "Last School Name",
-  "Last School UIDAS No",
-  "PEN No.",
-  "Email Address",
-  "Parents Ration Card No.",
-  "Ration Card Type",
-  "Student Weight",
-  "Student Length",
-  "Student Blood Group",
-  "Father Name",
-  "Father Occupation",
-  "Father Mobile Number",
-  "Father Adhar Number",
-  "Father Education",
-  "Mother Name",
-  "Mother Occupation",
-  "Mother Adhar No.",
-  "Mother Education",
-  "Guardian Name",
-  "Guardian Occupation",
-  "Guardian Mobile Number",
-  "Student Photo"
-]
-
-
-
-
-
-
+  const previewLabel = [
+    "Student Name",
+    "Adhar Number",
+    "Mobile No.",
+    "Full Address",
+    "Date Of Birth",
+    "Bank Account No.",
+    "Bank IFSC Code",
+    "Bank Name",
+    "Student Category",
+    "Religion",
+    "Nationality",
+    "Last School Name",
+    "Last School UIDAS No",
+    "PEN No.",
+    "Email Address",
+    "Parents Ration Card No.",
+    "Ration Card Type",
+    "Student Weight",
+    "Student Length",
+    "Student Blood Group",
+    "Father Name",
+    "Father Occupation",
+    "Father Mobile Number",
+    "Father Adhar Number",
+    "Father Education",
+    "Mother Name",
+    "Mother Occupation",
+    "Mother Adhar No.",
+    "Mother Education",
+    "Guardian Name",
+    "Guardian Occupation",
+    "Guardian Mobile Number",
+    "Student Photo",
+  ];
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -167,28 +158,46 @@ function NewAdmission() {
   };
 
   const handlePreviewClick = () => {
-        setOpenPreview(true);
+    setOpenPreview(true);
   };
 
   const handleClosePreview = () => {
     setOpenPreview(false);
   };
 
-
-
   const handleFileChange = (e) => {
+   
     const file = e.target.files[0];
-    if (file) {
-      setFormData({ ...formData, studentPhoto: file });
+     const maxSize = 100*1024;
+     if(file.size > maxSize){
+      setFormData({ ...formData, studentPhoto: "" });
+        setPreviewUrl(null);
+          setFileUploadError("File must be less than or equal to 100KB.");
+          return;
+     }
+     else {
 
-      // Generate a preview URL for the selected image
-      const preview = URL.createObjectURL(file);
-      setPreviewUrl(preview);
-    }
+
+      if (file) {
+        setFormData({ ...formData, studentPhoto: file });  
+        // Generate a preview URL for the selected image
+        const preview = URL.createObjectURL(file);
+        setPreviewUrl(preview);
+      }
+
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+          const base64String = reader.result.split(',')[1];
+          // console.log(base64String); // This binary string (Base64 format)
+      };
+  
+      reader.readAsDataURL(file);
+  
+
+     }
+    
   };
-
-
- 
 
   return (
     <div className="">
@@ -340,25 +349,29 @@ function NewAdmission() {
                 Student Photo
               </label>
               <input
-                type="file"
-                name="studentPhoto"
-                onChange={handleFileChange}
-                className="mt-1 block w-full border border-slate-500/50 bg-slate-100 dark:bg-slate-700/30 outline-none rounded-md p-2 transition-all duration-200 text-lg"
-                accept="image/*"
-              />
+  type="file"
+  name="studentPhoto"
+  onChange={handleFileChange}
+  className="mt-1 block w-full border border-slate-500/50 bg-slate-100 dark:bg-slate-700/30 outline-none rounded-md p-2 transition-all duration-200 text-lg"
+  accept="image/*"
+/>
 
-              {previewUrl && (
-                <div className="mt-3">
-                  <label className="block text-sm   font-medium text-slate-700 dark:text-slate-300 duration-200">
-                    Photo Preview
-                  </label>
-                  <img
-                    src={previewUrl}
-                    alt="Photo Preview"
-                    className="lg:h-96 md:h-80 sm:h-72 msm:h-60 object-cover mt-2 border border-slate-500/50 rounded-md shadow-md shadow-slate-950/50 "
-                  />
-                </div>
-              )}
+{previewUrl !== null ? (
+  <div className="mt-3">
+    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 duration-200">
+      Photo Preview
+    </label>
+    <img
+      src={previewUrl}
+      alt="Photo Preview"
+      className="lg:h-96 md:h-80 sm:h-72 msm:h-60 object-cover mt-2 border border-slate-500/50 rounded-md shadow-md shadow-slate-950/50"
+    />
+  </div>
+) : (
+  <div className="mt-3 text-red-600">{fileUploadError}</div>
+)}
+
+
             </div>
           </div>
 
@@ -395,60 +408,87 @@ function NewAdmission() {
         disableScrollLock={true}
       >
         <Fade in={openPreview}>
-        <Box className="absolute h-[100vh] w-[100vw] overflow-y-scroll md:py-20 py-16 ">
-  <div
-    className="lg:w-[80vw] w-[90vw] m-auto bg-slate-100/80 dark:bg-slate-800/80 text-slate-900 dark:text-slate-200 border-[1px] rounded-lg py-8 lg:px-12 sm:px-8 msm:px-4 shadow-lg dark:hover:shadow-slate-600 hover:shadow-slate-400 duration-200 relative "
-    style={{ borderColor: color }}
-  >
-   <div className="absolute top-1 right-1 hover:cursor-pointer">
-  <Button sx={{ color: 'red'}} onClick={handleClosePreview}>
-    <CloseIcon />
-  </Button>
-</div>
+          <Box className="absolute h-[100vh] w-[100vw] overflow-y-scroll md:py-20 py-16 ">
+            <div
+              className="lg:w-[80vw] w-[90vw] m-auto bg-slate-100/80 dark:bg-slate-800/80 text-slate-900 dark:text-slate-200 border-[1px] rounded-lg py-8 lg:px-12 sm:px-8 msm:px-4 shadow-lg dark:hover:shadow-slate-600 hover:shadow-slate-400 duration-200 relative "
+              style={{ borderColor: color }}
+            >
+              <div className="absolute top-1 right-1 hover:cursor-pointer">
+                <Button sx={{ color: "red" }} onClick={handleClosePreview}>
+                  <CloseIcon />
+                </Button>
+              </div>
 
-    <div className="lg:text-3xl md:text-2xl text-xl font-bold text-center ">
-      Form Preview
-    </div>
-    <div className="grid grid-cols-1 py-8  md:grid-cols-2 gap-5  ">
-      {Object.entries(formData).map(([key, value], id) => {
-        if(key!=='studentPhoto')return <div key={id} className="col-span-1  text-wrap break-words  ">
-          <label className="text-md px-1 font-normal text-slate-700 dark:text-slate-300 duration-200 text-nowrap">
-            {previewLabel[id]}
-          </label>
-          :
-          <span className="px-1  transition-all text-lg font-medium text-slate-700 dark:text-slate-300 duration-200 ">
-            {value}
-          </span>
-        </div>
-})}
+              <div className="lg:text-3xl md:text-2xl text-xl font-bold text-center ">
+                Form Preview
+              </div>
+              <div className="grid grid-cols-1 py-8  md:grid-cols-2 gap-5  ">
+                {Object.entries(formData).map(([key, value], id) => {
+                  if (key !== "studentPhoto")
+                    return (
+                      <div
+                        key={id}
+                        className="col-span-1  text-wrap break-words  "
+                      >
+                        <label className="text-md px-1 font-normal text-slate-700 dark:text-slate-300 duration-200 text-nowrap">
+                          {previewLabel[id]}
+                        </label>
+                        :
+                        <span className="px-1  transition-all text-lg font-medium text-slate-700 dark:text-slate-300 duration-200 ">
+                          {value}
+                        </span>
+                      </div>
+                    );
+                })}
 
+                {formData.studentPhoto && (
+                  <div className="col-span-1 ">
+                    <h3 className="textmd font-semibold">Student Photo</h3>
+                    <img
+                      src={URL.createObjectURL(formData.studentPhoto)}
+                      alt="Student Photo"
+                      className="lg:h-96 md:h-80 sm:h-72 msm:h-60 object-cover rounded-lg shadow-md shadow-slate-950/50"
+                    />
+                  </div>
+                )}
+              </div>
 
-
-{formData.studentPhoto && <div className="col-span-1 ">
-        <h3 className="textmd font-semibold">Student Photo</h3>
-        <img
-          src={URL.createObjectURL(formData.studentPhoto)}
-          alt="Student Photo"
-          className="lg:h-96 md:h-80 sm:h-72 msm:h-60 object-cover rounded-lg shadow-md shadow-slate-950/50"
-        />
-      </div>}
-
-
-    </div>
-
-
-    <div className="flex gap-1">
-
-     <div className="hover:cursor-pointer"> {isTicked?<CheckBoxOutlinedIcon  style={{color:color}} onClick={handleTicked}/>:<CheckBoxOutlineBlankOutlinedIcon  onClick={handleTicked}/> }</div>
-      <p>Ensure that carefuly preview All field</p>
-    </div>
-    <div className=" w-full flex justify-evenly  items-center h-20">
-
-    <Button variant="outlined" sx={{color:'red', borderColor:'red','&:hover':{borderColor:'red'}}} onClick={handleClosePreview}>Cancel</Button> {isTicked?<Button variant="contained">submit</Button>:<Button variant="contained" disabled>Submit</Button>}
-    </div>
-  </div>
-</Box>
-
+              <div className="flex gap-1">
+                <div className="hover:cursor-pointer">
+                  {" "}
+                  {isTicked ? (
+                    <CheckBoxOutlinedIcon
+                      style={{ color: color }}
+                      onClick={handleTicked}
+                    />
+                  ) : (
+                    <CheckBoxOutlineBlankOutlinedIcon onClick={handleTicked} />
+                  )}
+                </div>
+                <p>Ensure that carefuly preview All field</p>
+              </div>
+              <div className=" w-full flex justify-evenly  items-center h-20">
+                <Button
+                  variant="outlined"
+                  sx={{
+                    color: "red",
+                    borderColor: "red",
+                    "&:hover": { borderColor: "red" },
+                  }}
+                  onClick={handleClosePreview}
+                >
+                  Cancel
+                </Button>{" "}
+                {isTicked ? (
+                  <Button variant="contained">submit</Button>
+                ) : (
+                  <Button variant="contained" disabled>
+                    Submit
+                  </Button>
+                )}
+              </div>
+            </div>
+          </Box>
         </Fade>
       </Modal>
     </div>
